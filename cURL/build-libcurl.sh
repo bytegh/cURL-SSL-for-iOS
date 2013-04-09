@@ -22,7 +22,8 @@
 #  Change values here							  #
 #									  #
 VERSION="7.21.5"								  #
-SDKVERSION="4.3"								  #
+SIM_SDKVERSION="5.0"								  #
+ARM_SDKVERSION="6.1"								  #
 OPENSSL="${PWD}/../OpenSSL"						  #
 #									  #
 ###########################################################################
@@ -58,88 +59,88 @@ cd "${CURRENTPATH}/src/curl-${VERSION}"
 # iPhone Simulator
 ARCH="i386"
 PLATFORM="iPhoneSimulator"
-echo "Building libcurl for ${PLATFORM} ${SDKVERSION} ${ARCH}"
+echo "Building libcurl for ${PLATFORM} ${SIM_SDKVERSION} ${ARCH}"
 echo "Please stand by..."
 
 export CC="${DEVELOPER}/Platforms/${PLATFORM}.platform/Developer/usr/bin/gcc"
-export CFLAGS="-arch ${ARCH} -isysroot ${DEVELOPER}/Platforms/${PLATFORM}.platform/Developer/SDKs/${PLATFORM}${SDKVERSION}.sdk -I${OPENSSL}/include -L${OPENSSL}"
-mkdir -p "${CURRENTPATH}/bin/${PLATFORM}${SDKVERSION}.sdk"
+export CFLAGS="-arch ${ARCH} -isysroot ${DEVELOPER}/Platforms/${PLATFORM}.platform/Developer/SDKs/${PLATFORM}${SIM_SDKVERSION}.sdk -I${OPENSSL}/include -L${OPENSSL}"
+mkdir -p "${CURRENTPATH}/bin/${PLATFORM}${SIM_SDKVERSION}.sdk"
 
-LOG="${CURRENTPATH}/bin/${PLATFORM}${SDKVERSION}.sdk/build-libcurl-${VERSION}.log"
+LOG="${CURRENTPATH}/bin/${PLATFORM}${SIM_SDKVERSION}.sdk/build-libcurl-${VERSION}.log"
 
-echo "Configure libcurl for ${PLATFORM} ${SDKVERSION} ${ARCH}"
+echo "Configure libcurl for ${PLATFORM} ${SIM_SDKVERSION} ${ARCH}"
 
-./configure -prefix=${CURRENTPATH}/bin/${PLATFORM}${SDKVERSION}.sdk -disable-shared -with-random=/dev/urandom --with-ssl > "${LOG}" 2>&1
+./configure -prefix=${CURRENTPATH}/bin/${PLATFORM}${SIM_SDKVERSION}.sdk -disable-shared -with-random=/dev/urandom --with-ssl > "${LOG}" 2>&1
 
-echo "Make libcurl for ${PLATFORM} ${SDKVERSION} ${ARCH}"
+echo "Make libcurl for ${PLATFORM} ${SIM_SDKVERSION} ${ARCH}"
 
 make >> "${LOG}" 2>&1
 make install >> "${LOG}" 2>&1
 make clean >> "${LOG}" 2>&1
 
-echo "Building libcurl for ${PLATFORM} ${SDKVERSION} ${ARCH}, finished"
+echo "Building libcurl for ${PLATFORM} ${SIM_SDKVERSION} ${ARCH}, finished"
 #############
 
 #############
 # iPhoneOS armv6
-ARCH="armv6"
-PLATFORM="iPhoneOS"
-echo "Building libcurl for ${PLATFORM} ${SDKVERSION} ${ARCH}"
-echo "Please stand by..."
+#ARCH="armv6"
+#PLATFORM="iPhoneOS"
+#echo "Building libcurl for ${PLATFORM} ${ARM_SDKVERSION} ${ARCH}"
+#echo "Please stand by..."
 
-export CC="${DEVELOPER}/Platforms/${PLATFORM}.platform/Developer/usr/bin/gcc"
-export CFLAGS="-arch ${ARCH} -isysroot ${DEVELOPER}/Platforms/${PLATFORM}.platform/Developer/SDKs/${PLATFORM}${SDKVERSION}.sdk -I${OPENSSL}/include -L${OPENSSL}"
-mkdir -p "${CURRENTPATH}/bin/${PLATFORM}${SDKVERSION}-${ARCH}.sdk"
+#export CC="${DEVELOPER}/Platforms/${PLATFORM}.platform/Developer/usr/bin/gcc"
+#export CFLAGS="-arch ${ARCH} -isysroot ${DEVELOPER}/Platforms/${PLATFORM}.platform/Developer/SDKs/${PLATFORM}${ARM_SDKVERSION}.sdk -I${OPENSSL}/include -L${OPENSSL}"
+#mkdir -p "${CURRENTPATH}/bin/${PLATFORM}${ARM_SDKVERSION}-${ARCH}.sdk"
 
-LOG="${CURRENTPATH}/bin/${PLATFORM}${SDKVERSION}-${ARCH}.sdk/build-libcurl-${VERSION}.log"
+#LOG="${CURRENTPATH}/bin/${PLATFORM}${ARM_SDKVERSION}-${ARCH}.sdk/build-libcurl-${VERSION}.log"
 
-echo "Configure libcurl for ${PLATFORM} ${SDKVERSION} ${ARCH}"
+#echo "Configure libcurl for ${PLATFORM} ${ARM_SDKVERSION} ${ARCH}"
 
-./configure -prefix=${CURRENTPATH}/bin/${PLATFORM}${SDKVERSION}-${ARCH}.sdk --host=${ARCH}-apple-darwin --disable-shared -with-random=/dev/urandom --with-ssl > "${LOG}" 2>&1
+#./configure -prefix=${CURRENTPATH}/bin/${PLATFORM}${ARM_SDKVERSION}-${ARCH}.sdk --host=${ARCH}-apple-darwin --disable-shared -with-random=/dev/urandom --with-ssl > "${LOG}" 2>&1
 
-echo "Make libcurl for ${PLATFORM} ${SDKVERSION} ${ARCH}"
+#echo "Make libcurl for ${PLATFORM} ${ARM_SDKVERSION} ${ARCH}"
 
-make >> "${LOG}" 2>&1
-make install >> "${LOG}" 2>&1
-make clean >> "${LOG}" 2>&1
+#make >> "${LOG}" 2>&1
+#make install >> "${LOG}" 2>&1
+#make clean >> "${LOG}" 2>&1
 
-echo "Building libcurl for ${PLATFORM} ${SDKVERSION} ${ARCH}, finished"
+#echo "Building libcurl for ${PLATFORM} ${ARM_SDKVERSION} ${ARCH}, finished"
 #############
 
 #############
 # iPhoneOS armv7
 ARCH="armv7"
 PLATFORM="iPhoneOS"
-echo "Building libcurl for ${PLATFORM} ${SDKVERSION} ${ARCH}"
+echo "Building libcurl for ${PLATFORM} ${ARM_SDKVERSION} ${ARCH}"
 echo "Please stand by..."
 
 export CC="${DEVELOPER}/Platforms/${PLATFORM}.platform/Developer/usr/bin/gcc"
-export CFLAGS="-arch ${ARCH} -isysroot ${DEVELOPER}/Platforms/${PLATFORM}.platform/Developer/SDKs/${PLATFORM}${SDKVERSION}.sdk -I${OPENSSL}/include -L${OPENSSL}"
-mkdir -p "${CURRENTPATH}/bin/${PLATFORM}${SDKVERSION}-${ARCH}.sdk"
+export CFLAGS="-arch ${ARCH} -isysroot ${DEVELOPER}/Platforms/${PLATFORM}.platform/Developer/SDKs/${PLATFORM}${ARM_SDKVERSION}.sdk -I${OPENSSL}/include -L${OPENSSL}"
+mkdir -p "${CURRENTPATH}/bin/${PLATFORM}${ARM_SDKVERSION}-${ARCH}.sdk"
 
-LOG="${CURRENTPATH}/bin/${PLATFORM}${SDKVERSION}-${ARCH}.sdk/build-libcurl-${VERSION}.log"
+LOG="${CURRENTPATH}/bin/${PLATFORM}${ARM_SDKVERSION}-${ARCH}.sdk/build-libcurl-${VERSION}.log"
 
-echo "Configure libcurl for ${PLATFORM} ${SDKVERSION} ${ARCH}"
+echo "Configure libcurl for ${PLATFORM} ${ARM_SDKVERSION} ${ARCH}"
 
-./configure -prefix=${CURRENTPATH}/bin/${PLATFORM}${SDKVERSION}-${ARCH}.sdk --host=${ARCH}-apple-darwin --disable-shared -with-random=/dev/urandom --with-ssl > "${LOG}" 2>&1
+./configure -prefix=${CURRENTPATH}/bin/${PLATFORM}${ARM_SDKVERSION}-${ARCH}.sdk --host=${ARCH}-apple-darwin --disable-shared -with-random=/dev/urandom --with-ssl > "${LOG}" 2>&1
 
-echo "Make libcurl for ${PLATFORM} ${SDKVERSION} ${ARCH}"
+echo "Make libcurl for ${PLATFORM} ${ARM_SDKVERSION} ${ARCH}"
 
 make >> "${LOG}" 2>&1
 make install >> "${LOG}" 2>&1
 make clean >> "${LOG}" 2>&1
 
-echo "Building libcurl for ${PLATFORM} ${SDKVERSION} ${ARCH}, finished"
+echo "Building libcurl for ${PLATFORM} ${ARM_SDKVERSION} ${ARCH}, finished"
 #############
 
 #############
 # Universal Library
 echo "Build universal library..."
 
-lipo -create ${CURRENTPATH}/bin/iPhoneSimulator${SDKVERSION}.sdk/lib/libcurl.a ${CURRENTPATH}/bin/iPhoneOS${SDKVERSION}-armv6.sdk/lib/libcurl.a ${CURRENTPATH}/bin/iPhoneOS${SDKVERSION}-armv7.sdk/lib/libcurl.a -output ${CURRENTPATH}/libcurl.a
+lipo -create ${CURRENTPATH}/bin/iPhoneSimulator${SIM_SDKVERSION}.sdk/lib/libcurl.a  ${CURRENTPATH}/bin/iPhoneOS${ARM_SDKVERSION}-armv7.sdk/lib/libcurl.a -output ${CURRENTPATH}/libcurl.a
 
 mkdir -p ${CURRENTPATH}/include
-cp -R ${CURRENTPATH}/bin/iPhoneSimulator${SDKVERSION}.sdk/include/curl ${CURRENTPATH}/include/
+cp -R ${CURRENTPATH}/bin/iPhoneSimulator${SIM_SDKVERSION}.sdk/include/curl ${CURRENTPATH}/include/
 echo "Building all steps done."
 echo "Cleaning up..."
 rm -rf ${CURRENTPATH}/src
