@@ -45,4 +45,4 @@ cp -Rp "${CURRENTPATH}/OpenSSL/include/openssl" "${BUILD_PATH}/OpenSSL/Headers/"
 cp -p "${CURRENTPATH}/cURL/libcurl.a" "${BUILD_PATH}/cURL"
 cp -Rp "${CURRENTPATH}/cURL/include/curl" "${BUILD_PATH}/cURL/Headers/"
 
-echo "Building libraries done."
+echo "Building libraries done^_^"
